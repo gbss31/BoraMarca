@@ -8,7 +8,7 @@ $sucesso = true;
 if (!isset($_SESSION['email_verificacao'])) {
     header("Location: cadastro.php");
     exit;
-}""
+}
 
 $email = $_SESSION['email_verificacao'];
 
