@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.verificacao-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.verificacao-card h2 {
+    font-family: 'Protest Strike', sans-serif;
+    color: #201d39f2;
+    margin-bottom: 20px;
+}
+
+.verificacao-card label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.verificacao-card input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.verificacao-card input[type="text"]:focus {
+    border-color: #201d39f2;
+}
+
+.verificacao-card button {
+    background-color: #201d39f2;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.verificacao-card button:hover {
+    background-color: #151230f2;
+}
+
+.mensagem {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: green;
+}
+
+.erro {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+
+.toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }

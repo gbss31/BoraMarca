@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho */
+h1 {
+  font-family: 'Protest Strike', sans-serif;
+  font-size: 50px;
+  color: #201d39f2;
+  text-align: center;
+  margin: 40px 0 30px 0;
+}
+
+/* Formulário */
+form {
+  background-color: #ffffff;
+  padding: 3rem 4rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  resize: vertical; 
+}
+
+textarea {
+  min-height: 100px; 
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #201d39f2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #16132c;
+}
+
+
+footer {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+  color: #201d39f2;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  form {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+}

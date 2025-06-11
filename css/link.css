@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 20px;
+    background-color: #201d39f2;
+    color: white;
+    text-align: center;
+    font-family: 'Protest Strike', sans-serif;
+    position: static;
+    top: 0;
+    z-index: 10;
+}
+
+header a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h2 {
+    font-family: 'Protest Strike', sans-serif;
+    font-size: 2rem;
+    color: #201d39f2;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+}
+
+a.button, button {
+    display: inline-block;
+    background-color: #092646;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0, 123, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+a.button:hover, button:hover {
+    background-color: #354557;
+    box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+}
+
+a.button:active, button:active {
+    background-color: #00408d;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.erro {
+    color: red;
+    font-weight: bold;
+}
