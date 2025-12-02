@@ -1,42 +1,80 @@
 <?php 
 session_start();
+
 include 'config.php';
+include 'enviar_email.php';
 
 $mensagem = "";
 $sucesso = true;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+    $codigo_admin = $_POST['codigo_admin'];
+
     if (!isset($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['codigo_admin'])) {
+
         $mensagem =  "Preencha todos os campos.";
         $sucesso = false;
+
     } elseif ($_POST['codigo_admin'] !== "ADM123") {
+
         $mensagem = "Código de administrador inválido!";
         $sucesso = false;
-    } else {
-        $_SESSION['cadastro'] = [
-            'nome' => $_POST['nome'],
-            'email' => $_POST['email'],
-            'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
-            'tipo' => 'admin'
-        ];
 
-        $codigo = rand(100000, 999999);
-        $_SESSION['codigo_verificacao'] = $codigo;
+    } else { 
 
-        // Envia o e-mail
-        $para = $_POST['email'];
-        $assunto = "Código de verificação - Cadastro Admin";
-        $mensagemEmail = "Seu código de verificação é: $codigo";
-        $cabecalhos = "From: sistema@aluguelquadras.com";
+         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+         $codigo = rand(100000, 999999);
 
-        if (mail($para, $assunto, $mensagemEmail, $cabecalhos)) {
-            header("Location: verificar_codigo.php");
-            exit;
-        } else {
-            $mensagem = "Erro ao enviar o código por e-mail.";
+         $verifica = $pdo -> prepare ("SELECT * FROM usuarios WHERE email = :email");
+         $verifica -> execute([':email' => $email]);
+
+         if ($verifica -> rowCount() > 0) {
+
+            $mensagem = "Este e-mail já está cadastrado.";
             $sucesso = false;
-        }
-    }
+
+         } else {
+
+            $sql = "INSERT INTO usuarios_pendentes (nome, email, senha_hash, codigo_verificacao, tipo)
+                    VALUES (:nome, :email, :senha, :codigo, :tipo)";
+
+
+            $stmt = $pdo -> prepare($sql);
+            $stmt -> bindParam(':nome', $nome);
+            $stmt -> bindParam(':email', $email);
+            $stmt -> bindParam(':senha', $senha_hash);
+            $stmt -> bindParam(':codigo', $codigo);
+
+            $tipo  = 'admin';
+            $stmt -> bindParam(':tipo', $tipo);
+
+            if ($stmt -> execute()) {
+
+                $assunto = "Código de verificação - Cadastro Admin";
+                $mensagemcorpo = "<h2>Olá, $nome! </h2>
+                <p> Seu código de verificação é: $codigo </p>
+                <p> Para sua propia segurança não compartilhe este codigo com <strong> ninguém </strong>" ;
+    
+                enviarEmail($email, $assunto, $mensagemcorpo);
+
+                $_SESSION['email_verificacao'] = $email;
+                $_SESSION['tipo'] = 'admin';
+
+                header("Location: verificar_codigo.php");
+                exit;
+            } else {
+
+                $mensagem = "Erro ao iniciar cadastro";
+                $sucesso = false;
+            }
+            
+         }
+
+  } 
 
 }
 

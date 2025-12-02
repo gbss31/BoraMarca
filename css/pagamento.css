@@ -1,0 +1,224 @@
+/* ------------------------------------------------------ */
+/*                     FONTES & BASE                      */
+/* ------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Protest+Strike&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+    background: linear-gradient(135deg, #dbe2f1, #cfd6f6) !important; /* FUNDO BRANCO */
+    color: #fff;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+
+/* ------------------------------------------------------ */
+/*                   CONTAINER PRINCIPAL                  */
+/* ------------------------------------------------------ */
+
+.checkout-container {
+    width: 900px;
+    display: flex;
+    gap: 30px;
+    padding: 25px;
+    height: auto;
+
+    /* COR DO BLOCO — AGORA FIXA, NÃO DEPENDE DO FUNDO */
+    background: #3b3f63; /* cor parecida com a original (azul escuro elegante) */
+
+    border-radius: 20px;
+    box-shadow: 0 0 25px #00000060;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.resumo, .pagamento-form {
+    flex: 1;
+}
+
+.resumo h3, .pagamento-form h2 {
+    font-family: 'Protest Strike', sans-serif;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+/* ------------------------------------------------------ */
+/*                        RESUMO                          */
+/* ------------------------------------------------------ */
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ffffff22;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ------------------------------------------------------ */
+/*                    FORMULÁRIO                          */
+/* ------------------------------------------------------ */
+
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.input-group input {
+    background: rgba(255,255,255,0.09);
+    border: none;
+    outline: none;
+    padding: 12px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+/* ------------------------------------------------------ */
+/*                 MÉTODOS DE PAGAMENTO                   */
+/* ------------------------------------------------------ */
+
+.metodos-pagamento {
+    display: flex;
+    gap: 15px;
+}
+
+.metodo {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px 20px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    user-select: none;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.metodo input {
+    display: none;
+}
+
+.metodo.active {
+    background: #38d39f;
+    color: #000;
+    border-color: #2dbb8a;
+    box-shadow: 0 0 10px #2dbb8a;
+}
+
+/* ------------------------------------------------------ */
+/*                         BOTÃO                          */
+/* ------------------------------------------------------ */
+
+.btn-finalizar {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: #201d39f2;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-finalizar:hover {
+    background: #16152fd8;
+}
+
+/* ------------------------------------------------------ */
+/*                         LOADING                        */
+/* ------------------------------------------------------ */
+
+#loading {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #00000088;
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ffffff33;
+    border-top: 5px solid #38d39f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#loading p {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* ------------------------------------------------------ */
+/*                   ANIMAÇÕES                            */
+/* ------------------------------------------------------ */
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------------------------------ */
+/*                    RESPONSIVO                          */
+/* ------------------------------------------------------ */
+
+@media (max-width: 900px) {
+    .checkout-container {
+        flex-direction: column;
+        width: 92%;
+    }
+}
+ 
+.card {
+    background-size: cover;
+
+}
+
+.card h3, 
+.card p {
+    margin: 0;
+    padding: 0;
+}

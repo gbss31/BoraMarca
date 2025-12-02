@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+
+body {
+    font-family: 'Lexend', sans-serif;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #201d39f2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-family: 'Protest Strike', sans-serif;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #201d39f2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #201d39f2;
+    box-shadow: 0 0 6px rgba(32,29,57,0.2);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.botao {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #201d39f2;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #15132c;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button.excluir {
+    background-color: #dc3545;
+}
+
+button.excluir:hover {
+    background-color: #a71d2a;
+}
+
+.voltar {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #201d39f2;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.voltar:hover {
+    background-color: #15132c;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .botao {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }

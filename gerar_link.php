@@ -31,7 +31,7 @@ $reserva_id = $_POST['reserva_id'] ?? '';
 
                 echo "<h2>Link gerado</h2>";
                 echo "<input type='text' value='$link' readonly>";
-                echo "<a class='button' href='minhas_reservas.php'>Voltar</a>";
+                echo "<a class='button' href='sessao.php?reserva_id=" . htmlspecialchars($reserva_id) . "'>Voltar</a>";
 
             } catch (PDOException $e) {
                 echo "<p class='erro'>Erro ao gerar convite: " . $e->getMessage() . "</p>";

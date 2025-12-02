@@ -77,4 +77,125 @@ form button:hover {
     background-color: #15132c;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
 
+
+.modal form {
+  position: relative; 
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+.modal label {
+  font-weight: bold;
+}
+
+.modal input[type="date"],
+.modal input[type="time"],
+.modal input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+
+
+
+.modal button[type="submit"] {
+  background: #201d39f2;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal button[type="submit"]:hover {
+  background: #151330;
+}
+
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: #201d39f2;
+}
+
+/* Opções de pagamento */
+.option {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.option.active {
+  background: #201d39f2;
+  color: #fff;
+  border-color: #151330;
+}
+
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+button {
+    background: #201d39f2;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: center;
+}
+
+button:hover {
+    background-color: #15132c;
+}

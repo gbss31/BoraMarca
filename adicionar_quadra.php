@@ -1,9 +1,12 @@
 <?php
 session_start();
 include 'config.php';
+include 'enviar_email.php';
 
 $mensagem = "";
 $sucesso = true;
+
+$email = $_SESSION['email'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!isset($_POST['nome'], $_POST['localizacao'], $_POST['descricao'], $_POST['preco_hora'])) {
@@ -27,6 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt -> bind_param("ssssi", $nome, $localizacao, $descricao, $preco, $id_admin);
 
         if ($stmt -> execute()) {
+
+            $assunto="Quadra adicionada com sucesso";
+            $mensagemcorpo= "<h2>Olá!</h2>
+<p>Estamos passando por aqui só pra informar que a sua quadra <strong>$nome</strong> já foi adicionada!</p>
+<p>Para mais informações e gerenciamento acesse a aba <a href='http://localhost/soccer/index.php'>Minhas reservas</a>.</p>";
+
+            enviarEmail($email, $assunto, $mensagemcorpo);
+
             $mensagem = "Quadra adicionada com sucesso!";
             $sucesso = true;
         } else {

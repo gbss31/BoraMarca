@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+
+body {
+    font-family: 'Lexend', sans-serif;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #201d39f2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.quadra-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.quadra-card h2 {
+    margin-top: 0;
+    font-family: 'Protest Strike', sans-serif;
+}
+
+.form-container {
+    padding: 20px;
+    border-top: 2px solid #ccc;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form select,
+form textarea,
+form button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form textarea {
+    height: 100px;
+    resize: none;
+}
+
+form button {
+    background-color: #201d39f2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #15132c;
+}
+ 
+p {
+
+    text-align: center;
+}
+
+.mensagem {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: green;
+}
+
+.erro {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+
+.toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }

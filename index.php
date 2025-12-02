@@ -24,9 +24,9 @@ include 'config.php';
       <div class="saudacao">
         <?php if (isset($_SESSION['nome'])): ?>
             <?php if ($_SESSION['tipo'] == 'admin'): ?>
-                <p>Olá <?php echo htmlspecialchars($_SESSION['nome']); ?>!</p>
+                <p class="saudacao">Olá <?php echo htmlspecialchars($_SESSION['nome']); ?>!</p>
             <?php else: ?>
-                <p>Opa, <?php echo htmlspecialchars($_SESSION['nome']); ?> bora marcar?!</p>
+                <p class="saudacao">Opa, <?php echo htmlspecialchars($_SESSION['nome']); ?> bora marcar?!</p>
             <?php endif; ?>
         <?php endif; ?>
     </div>
@@ -81,15 +81,38 @@ try {
 <?php if (!empty($quadras)): ?>
     <div class="quadras-container">
         <?php foreach ($quadras as $quadra): ?>
+
+            <?php
+
+            $stmtmedia = $pdo -> prepare("SELECT AVG(nota) AS media FROM avaliacoes WHERE quadra_id = ?");
+            $stmtmedia -> execute([$quadra['id']]);
+            $media = $stmtmedia -> fetch(PDO::FETCH_ASSOC)['media'];
+
+            ?>
             <div class="quadra-card">
                 <h3>
-                    <a href="quadra.php?id=<?php echo $quadra['id']; ?>">
+                    <a href= " <?php
+
+                    if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 'admin') {
+                        echo 'admin_quadra.php?id=' . $quadra['id'];
+                    } else {
+                        echo 'quadra.php?id=' . $quadra['id'];
+                    } ?>">
+
                         <?php echo htmlspecialchars($quadra['nome']); ?>
                     </a>
                 </h3>
                 <p><?php echo nl2br(htmlspecialchars($quadra['descricao'])); ?></p>
                 <p class="preco">R$ <?php echo number_format($quadra['preco_hora'], 2, ',', '.'); ?> por hora</p>
+
+                <?php if ($media): ?>
+                    <p class="avaliacao"> ⭐ Média <?php echo number_format($media, 1, ',', '.'); ?> / 5 </p>
+                <?php else: ?>
+                    <p class="avaliacao"> ⭐ Sem avaliações <?php echo number_format($media, 1, ',', '.'); ?> / 5 </p>
+                <?php endif; ?>
+
             </div>
+
         <?php endforeach; ?>
     </div>
     

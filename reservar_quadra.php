@@ -4,6 +4,8 @@ session_start();
 include 'config.php';
 include 'enviar_email.php';
 
+
+
 if (!isset($_SESSION['nome'])) {
     header('Location: login.php');
     exit;
@@ -15,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $_POST['data'] ?? '';
     $hora = $_POST['hora'] ?? '';
     $duracao = $_POST['duracao'] ?? '';
+    $tipo_pagamento = $_POST['tipo_pagamento'];
+    
 
     if (!$quadra_id || empty($data) || empty($hora) || empty($duracao)) {
         echo "Preencha todos os campos corretamente.";
@@ -23,8 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
        
-        $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM reservas WHERE quadra_id = ? AND data_reserva = ? AND hora = ?");
-        $stmtCheck->execute([$quadra_id, $data, $hora]);
+        $hora_inicio = $hora;
+        $hora_fim = date('H:i:s', strtotime("+$duracao hours", strtotime($hora)));
+
+
+        $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM reservas WHERE quadra_id = ? AND data_reserva = ? AND (hora <= ? AND ADDTIME(hora, SEC_TO_TIME(duracao * 3600)) > ?)");
+        $stmtCheck->execute([$quadra_id, $data, $hora_fim, $hora_inicio]);
         $reservasExistentes = $stmtCheck->fetchColumn();
 
         if ($reservasExistentes > 0) {
@@ -34,13 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
       
-        $stmt = $pdo->prepare("INSERT INTO reservas (usuario_id, quadra_id, data_reserva, hora, duracao) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO reservas (usuario_id, quadra_id, data_reserva, hora, duracao, tipo_pagamento) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $_SESSION['id'],
             $quadra_id,
             $data,
             $hora,
-            $duracao
+            $duracao,
+            $tipo_pagamento 
         ]);
 
         

@@ -14,10 +14,10 @@ try {
     $sql = "SELECT r.*, q.nome AS nome_quadra, q.preco_hora
             FROM reservas r
             JOIN quadras q ON r.quadra_id = q.id
-            WHERE r.usuario_id = :usuario_id
+            WHERE (r.usuario_id = :usuario_id
                OR r.id IN (
-                   SELECT reserva_id FROM participantes WHERE usuario_id = :usuario_id
-               )
+                   SELECT reserva_id FROM participantes WHERE usuario_id = :usuario_id))
+            AND  r.data_reserva >= CURDATE()
             ORDER BY r.data_reserva DESC, r.hora DESC";
 
     $stmt = $pdo->prepare($sql);
@@ -35,7 +35,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Minhas Reservas</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservas.css">
     <style>
        
         button {
@@ -64,49 +64,43 @@ try {
         <ul class="lista-reservas">
             <?php foreach ($reservas as $reserva): ?>
                 <li class="reserva-item">
-                    <strong>Quadra:</strong> <?= htmlspecialchars($reserva['nome_quadra']) ?><br>
+                   <a href="sessao.php?reserva_id=<?= htmlspecialchars($reserva['id']) ?>" class="reserva-link">
+
+                    <strong>Quadra:</strong> <?= htmlspecialchars($reserva['nome_quadra']) ?> <br>
                     <strong>Data:</strong> <?= date('d/m/Y', strtotime($reserva['data_reserva'])) ?><br>
-                    <strong>Hora:</strong> <?= date('H:i', strtotime($reserva['hora'])) ?><br>
-                    <strong>Duração:</strong> <?= $reserva['duracao'] ?> hora(s)<br>
+                    <strong>Hora:</strong> <?= date('H:i', strtotime($reserva['hora'])) ?>
 
+                    </a> 
+                   </li>
                     <?php
+
                     
-                    $sqlParticipantes = "SELECT COUNT(*) AS total FROM participantes WHERE reserva_id = ?";
-                    $stmtParticipantes = $pdo->prepare($sqlParticipantes);
-                    $stmtParticipantes->execute([$reserva['id']]);
-                    $totalParticipantes = $stmtParticipantes->fetch(PDO::FETCH_ASSOC)['total'];
 
-                 
-                    $pessoasNaSessao = $totalParticipantes + 1;
+                    $dataHoraInicio = $reserva['data_reserva'] .  ' ' . $reserva['hora'];
+                    $dataHoraFim = date('Y-m-d H:i:s', strtotime($dataHoraInicio . " + {$reserva['duracao']} hour"));
+                    $agora =date ('Y-m-d H:i:s');
 
-                    $valorTotal = $reserva['preco_hora'] * $reserva['duracao'];
+                    $stmtAval = $pdo -> prepare("SELECT COUNT(*) FROM avaliacoes WHERE reserva_id = ?");
+                    $stmtAval -> execute ([$reserva['id']]);
+                    $jaAvaliada = $stmtAval -> fetchColumn();
 
-                    $valorPorPessoa = ($pessoasNaSessao > 0) ? $valorTotal / $pessoasNaSessao : 0;
                     ?>
 
-                    <strong>Pessoas nesta sessão:</strong> <?= $pessoasNaSessao ?><br>
-                    <strong>Valor total da reserva:</strong> R$ <?= number_format($valorTotal, 2, ',', '.') ?><br>
-                    <strong>Valor por pessoa:</strong> R$ <?= number_format($valorPorPessoa, 2, ',', '.') ?><br>
 
-                    <br> 
-                    
-                    
-                    <form action="desmarcar_reserva.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="reserva_id" value="<?= $reserva['id'] ?>">
-                        <button type="submit">Desmarcar</button>
-                    </form>
+                    <br>                 
 
-                   
-                    <form action="gerar_link.php" method="POST" style="display:inline;">
-                        <input type="hidden" name="reserva_id" value="<?= $reserva['id'] ?>">
-                        <button type="submit">Gerar Link</button>
-                    </form>
                 </li>
+            </li>
+
             <?php endforeach; ?>
+
         </ul>
-    <?php else: ?>
-        <p>Você ainda não fez nenhuma reserva.</p>
-    <?php endif; ?>
-</main>
-</body>
+                <?php else: ?>
+                    <p>Você ainda não fez nenhuma reserva.</p>
+                <?php endif; ?>
+
+        <p><a href="historico.php"> Veja seu historico de partidas </a></p>
+
+        </main>
+    </body>
 </html>

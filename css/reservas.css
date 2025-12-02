@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Protest+Strike&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+header {
+  width: 100%;
+  background-color: #201d39f2;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+}
+
+header h1 {
+  font-family: 'Protest Strike', sans-serif;
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+header a {
+  color: #fff;
+  background-color: #201d39f2;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+header a:hover {
+  background-color: #353250f2;
+}
+
+
+main {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+}
+
+
+.lista-reservas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.reserva-link {
+  display: block;
+  padding: 15px;
+    background-color: #f0f4f9;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #222;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.reserva-link:hover {
+  background-color: #e0e7ff;
+  transform: translateY(-2px);
+}
+
+.reserva-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(32, 29, 57, 0.15);
+}
+
+.reserva-item strong {
+  color: #201d39f2;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  background: linear-gradient(135deg, #201d39f2, #2a2563);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #16132c, #1d1a3a);
+  transform: translateY(-1px);
+}
+
+/* Links */
+main p a {
+  display: inline-block;
+  margin-top: 25px;
+  color: #201d39f2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+main p a:hover {
+  color: #15132a;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+

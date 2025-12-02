@@ -1,0 +1,231 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Protest+Strike&display=swap');
+
+:root {
+    --cor-primaria: #201d39f2;
+    --cor-secundaria: #354557;
+    --cor-fundo: linear-gradient(135deg, #dbe2f1, #cfd6f6);
+    --cor-botao: #092646;
+    --cor-texto: #222;
+    --cor-preco: #27ae60;
+    --sombra: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: block; 
+}
+
+
+.sessao-container {
+    display: flex;
+    max-width: 1400px;
+    width: 95%;
+    margin: 40px auto;
+    height: auto; 
+    gap: 20px; 
+    box-shadow: var(--sombra);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9); 
+}
+/* Coluna da esquerda: Chat (maior) */
+.chat-container {
+    flex: 3; /* Ocupa 3 partes do espaço disponível (ex: 70-75% da largura) */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff;
+    border-right: 1px solid #ddd; /* Linha de separação */
+}
+
+/* Título do Chat */
+.chat-container h2 {
+    font-family: 'Protest Strike', sans-serif;
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Área de Mensagens */
+#mensagens {
+    flex-grow: 1; /* Ocupa todo o espaço vertical restante */
+    overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo exceder */
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Para as mensagens fluirem de cima para baixo */
+}
+
+
+.mensagem {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mensagem p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.mensagem strong {
+    font-weight: 600;
+}
+
+
+.mensagem.usuario {
+    align-self: flex-end;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border-bottom-right-radius: 3px;
+}
+
+
+.mensagem.outro {
+    align-self: flex-start;
+    background-color: #dbe2f1;
+    color: var(--cor-texto);
+    border-bottom-left-radius: 3px;
+}
+
+
+#formChat {
+    display: flex;
+    gap: 10px;
+}
+
+#formChat input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#formChat button {
+   
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+.info-container {
+    flex: 1.5; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px; 
+    background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.informacoes-reserva,
+.participantes {
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.info-container h3 {
+    font-family: 'Protest Strike', sans-serif;
+    font-size: 1.4rem;
+    color: var(--cor-secundaria);
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-primaria);
+    text-align: center;
+}
+
+.informacoes-reserva p {
+    margin: 8px 0;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.participantes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.participantes li {
+    background-color: #f0f4f9;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-weight: 300;
+    border-left: 4px solid var(--cor-primaria);
+}
+
+form button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #201d39f2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #15132c;
+}
+
+.botoes-acoes {
+    display: flex;
+    justify-content: center;
+    gap:15px;
+    margin-top: 15px
+}
+
+.botoes-acoes form button {
+    margin: 0;
+}
+
+.voltar {
+    display: inline-block;      
+    width: auto;                
+    height: auto;            
+    margin: 15px 0 0 15px;    
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #201d39f2;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid #201d39f2;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.voltar:hover {
+    background-color: #15132c;
+    color: #fff;
+}
+
+.btn-pago {
+                background-color: #2ecc71; /* Verde */
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                cursor: default;
+                font-weight: bold;
+                border-radius: 5px;
+            }

@@ -1,77 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Protest+Strike&display=swap');
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Lexend', sans-serif;
   background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 
 h2 {
   font-family: 'Protest Strike', sans-serif;
-  font-size: 40px;
+  font-size: 42px;
   color: #201d39f2;
   text-align: center;
-  margin: 40px 0 30px 0;
+  margin-bottom: 35px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 
 form {
-  background-color: #ffffff;
-  padding: 3rem 4rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2.8rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(32, 29, 57, 0.2);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(32, 29, 57, 0.25);
+}
+
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
   font-size: 16px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #201d39f2;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(32, 29, 57, 0.1);
+  outline: none;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background-color: #201d39f2;
+  padding: 14px;
+  background: linear-gradient(135deg, #201d39f2, #2a2563);
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
   margin-top: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #16132c;
+  background: linear-gradient(135deg, #16132c, #1d1a3a);
+  transform: translateY(-1px);
+}
+
+
+input, button {
+  transition: 0.3s ease;
 }
 
 
 @media screen and (max-width: 500px) {
   h2 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   form {
-    padding: 1.5rem;
-    border-radius: 15px;
+    padding: 1.8rem;
+    border-radius: 18px;
+  }
+
+  button {
+    font-size: 15px;
   }
 }

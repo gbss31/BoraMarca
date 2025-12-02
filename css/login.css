@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Protest+Strike&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Protest+Strike&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,11 +8,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Lexend', sans-serif;
-  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+  background: linear-gradient(135deg, #dbe2f1, #cfd6f6);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -21,39 +22,59 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 40px;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 
 h1 {
   font-family: 'Protest Strike', sans-serif;
-  font-size: 60px;
+  font-size: 58px;
   color: #201d39f2;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
 .form-container {
-  background-color: #ffffff;
-  padding: 2rem 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
   text-align: left;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
 }
+
+.form-container:hover {
+  transform: translateY(-4px);
+}
+
 
 input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 12px 15px;
-  margin: 10px 0;
+  margin: 10px 0 18px;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #201d39f2;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(32, 29, 57, 0.2);
+}
+
 
 button {
   width: 100%;
@@ -62,33 +83,63 @@ button {
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: 600;
   margin-top: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(32, 29, 57, 0.3);
 }
 
 button:hover {
-  background-color: #16132c;
+  background-color: #2b2660;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(32, 29, 57, 0.4);
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 
 .links {
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
 }
 
 .links a {
   color: #201d39f2;
   text-decoration: none;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.links a i {
+  font-size: 18px;
+}
+
+.links a + a::before {
+  content: "|";
+  color: rgba(32, 29, 57, 0.6);
+  font-weight: 400;
+  margin-right: 10px;
 }
 
 .links a:hover {
+  color: #2b2660;
   text-decoration: underline;
+  transform: translateY(-2px);
 }
 
-
+/* ===== RODAPÉ ===== */
 .rodape {
   margin-top: auto;
   padding: 20px;
@@ -96,16 +147,37 @@ button:hover {
   color: #201d39f2;
   font-size: 14px;
   font-weight: bold;
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
 @media screen and (max-width: 500px) {
   h1 {
-    font-size: 40px;
+    font-size: 42px;
   }
 
   .form-container {
-    padding: 1.5rem;
-    border-radius: 15px;
+    padding: 1.8rem;
+    border-radius: 16px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .links a + a::before {
+    content: "";
   }
 }

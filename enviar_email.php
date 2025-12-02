@@ -22,6 +22,7 @@ try {
 
     $mail -> addAddress($destinatario);
 
+    $mail -> CharSet = 'UTF-8';
     $mail -> isHTML(true);
     $mail -> Subject = $assunto;
     $mail -> Body = $mensagemcorpo;
@@ -31,10 +32,12 @@ try {
     $mail -> send();
     $message = "Email enviado com sucesso!";
     $sucesso = true;
+    return true;
 
 } catch (Exception  $e) {
     $message = "Erro ao enviar email";
     $sucesso = false;
+    return false;
 }
 
 }
