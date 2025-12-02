@@ -92,6 +92,7 @@ try {
             </div>
         <?php endforeach; ?>
     </div>
+    
 <?php else: ?>
     <p>Nenhuma quadra foi encontrada.</p>
 <?php endif; ?>
